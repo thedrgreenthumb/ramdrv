@@ -2,14 +2,23 @@
 Linux kernel module driver for virtual RAM disk
 
 ## Requirements
- * Linux Kernel 3.10+ (also headers)
- * CMake 3.0+
+ * CentOS Linux Release 7.6.1810
+ * kernel-lt
  
 ## Compilation
-At first you have to build kernel module. Make sure you had installed Linux headers before by (on Debian):
+At first you have to build kernel module. Make sure you had installed kernel-lt:
 ```
-sudo apt-get install linux-headers-[VERSION]
+# rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+# rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
+# yum --enablerepo=elrepo-kernel install kernel-lt
+# reboot
 ```
+Then install required packages
+```
+# yum --enablerepo=elrepo-kernel install kernel-lt-devel kernel-lt-headers
+# yum install gcc gcc-c++ cmake
+```
+
 To compile Kernel module:
 ```
 cd kmod
